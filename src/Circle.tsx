@@ -1,4 +1,5 @@
 import styled, { StyledInterface } from "styled-components"
+import { useState } from 'react';
 
 interface ContainerProps{
     bgColor: string;
@@ -24,8 +25,9 @@ interface CircleProps {
 // function Circle(props:CircleProps) {
 //     return <Container bgColor={props.bgColor}></Container>
 // }
-function Circle({bgColor,borderColor, text = "default text"}:CircleProps) {
-    return <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
+function Circle({ bgColor, borderColor = bgColor, text = "default text" }: CircleProps) {
+    const [counter, setCounter] = useState<number|string>(1)
+    return <Container bgColor={bgColor} borderColor={borderColor}>
         {text} 
     </Container>
 }
@@ -35,3 +37,5 @@ function Circle({bgColor,borderColor, text = "default text"}:CircleProps) {
 export default Circle;
 
 //props를 interface로 정의해준다. object 가 어떻게 보이는지를 설명해준다.
+//typescript는 useState의 initailValue를 통해 변수의 자료형을 유추한다.
+//
